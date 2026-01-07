@@ -1,0 +1,136 @@
+<view class="container">
+  <view class="header">
+    <text class="title">📊 检测结果</text>
+    <text class="subtitle">基于您的身体数据，我们进行了全面分析</text>
+  </view>
+
+  <view class="score-section">
+    <view class="score-circle">
+      <text class="score-value">{{overallScore}}</text>
+      <text class="score-unit">分</text>
+    </view>
+    <text class="score-label">{{healthLevel}}</text>
+  </view>
+
+  <view class="section">
+    <view class="section-title">📈 身体指标</view>
+    <view class="metrics-grid">
+      <view class="metric-card">
+        <text class="metric-icon">📏</text>
+        <text class="metric-label">BMI指数</text>
+        <text class="metric-value {{bmiStatus.color}}">{{bmi}}</text>
+        <text class="metric-desc">{{bmiStatus.text}}</text>
+      </view>
+      
+      <view class="metric-card">
+        <text class="metric-icon">❤️</text>
+        <text class="metric-label">心率</text>
+        <text class="metric-value {{heartRateStatus.color}}">{{heartRate}}</text>
+        <text class="metric-desc">{{heartRateStatus.text}}</text>
+      </view>
+      
+      <view class="metric-card">
+        <text class="metric-icon">🩸</text>
+        <text class="metric-label">血压</text>
+        <text class="metric-value {{bpStatus.color}}">{{bloodPressure}}</text>
+        <text class="metric-desc">{{bpStatus.text}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">💪 体质分析</view>
+    <view class="analysis-card">
+      <view class="analysis-item">
+        <view class="analysis-header">
+          <text class="analysis-icon">🏋️</text>
+          <text class="analysis-title">力量素质</text>
+          <text class="analysis-score {{strengthScore >= 60 ? 'good' : (strengthScore >= 40 ? 'normal' : 'poor')}}">{{strengthScore}}分</text>
+        </view>
+        <progress class="progress-bar" percent="{{strengthScore}}" activeColor="#c9a962" backgroundColor="rgba(201, 169, 98, 0.2)" strokeWidth="8" borderRadius="4"/>
+        <text class="analysis-desc">{{strengthAdvice}}</text>
+      </view>
+      
+      <view class="analysis-item">
+        <view class="analysis-header">
+          <text class="analysis-icon">🏃</text>
+          <text class="analysis-title">耐力素质</text>
+          <text class="analysis-score {{enduranceScore >= 60 ? 'good' : (enduranceScore >= 40 ? 'normal' : 'poor')}}">{{enduranceScore}}分</text>
+        </view>
+        <progress class="progress-bar" percent="{{enduranceScore}}" activeColor="#c9a962" backgroundColor="rgba(201, 169, 98, 0.2)" strokeWidth="8" borderRadius="4"/>
+        <text class="analysis-desc">{{enduranceAdvice}}</text>
+      </view>
+      
+      <view class="analysis-item">
+        <view class="analysis-header">
+          <text class="analysis-icon">🧘</text>
+          <text class="analysis-title">柔韧性</text>
+          <text class="analysis-score {{flexibilityScore >= 60 ? 'good' : (flexibilityScore >= 40 ? 'normal' : 'poor')}}">{{flexibilityScore}}分</text>
+        </view>
+        <progress class="progress-bar" percent="{{flexibilityScore}}" activeColor="#c9a962" backgroundColor="rgba(201, 169, 98, 0.2)" strokeWidth="8" borderRadius="4"/>
+        <text class="analysis-desc">{{flexibilityAdvice}}</text>
+      </view>
+      
+      <view class="analysis-item">
+        <view class="analysis-header">
+          <text class="analysis-icon">⚡</text>
+          <text class="analysis-title">爆发力</text>
+          <text class="analysis-score {{powerScore >= 60 ? 'good' : (powerScore >= 40 ? 'normal' : 'poor')}}">{{powerScore}}分</text>
+        </view>
+        <progress class="progress-bar" percent="{{powerScore}}" activeColor="#c9a962" backgroundColor="rgba(201, 169, 98, 0.2)" strokeWidth="8" borderRadius="4"/>
+        <text class="analysis-desc">{{powerAdvice}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">🎯 锻炼建议</view>
+    <view class="recommendation-card">
+      <view class="rec-header">
+        <text class="rec-icon">📋</text>
+        <text class="rec-title">个性化训练计划</text>
+      </view>
+      
+      <view class="rec-section">
+        <text class="rec-label">🏃 每周运动频率</text>
+        <text class="rec-value">{{recommendation.frequency}}</text>
+      </view>
+      
+      <view class="rec-section">
+        <text class="rec-label">⏱️ 单次运动时长</text>
+        <text class="rec-value">{{recommendation.duration}}</text>
+      </view>
+      
+      <view class="rec-section">
+        <text class="rec-label">💥 建议运动类型</text>
+        <view class="rec-tags">
+          <text class="rec-tag" wx:for="{{recommendation.types}}" wx:key="index">{{item}}</text>
+        </view>
+      </view>
+      
+      <view class="rec-section">
+        <text class="rec-label">⚠️ 注意事项</text>
+        <text class="rec-value">{{recommendation.tips}}</text>
+      </view>
+    </view>
+    
+    <view class="weekly-plan">
+      <text class="plan-title">📅 本周推荐训练</text>
+      <view class="plan-list">
+        <view class="plan-item" wx:for="{{weeklyPlan}}" wx:key="index">
+          <view class="plan-day">{{item.day}}</view>
+          <view class="plan-content">
+            <text class="plan-workout">{{item.workout}}</text>
+            <text class="plan-duration">{{item.duration}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-section">
+    <button class="btn-primary" bindtap="saveResult">保存结果</button>
+    <button class="btn-secondary" bindtap="goBack">重新检测</button>
+    <button class="btn-tertiary" bindtap="goToExercise">查看运动教程</button>
+  </view>
+</view>

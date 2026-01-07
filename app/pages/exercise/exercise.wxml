@@ -1,0 +1,141 @@
+<view class="container">
+  <view class="header">
+    <text class="title">📚 运动教学</text>
+    <text class="subtitle">科学训练，健康生活</text>
+  </view>
+
+  <view class="tab-container">
+    <scroll-view scroll-x class="tab-scroll">
+      <view class="tab-list">
+        <view 
+          class="tab-item {{currentTab === index ? 'active' : ''}}" 
+          wx:for="{{tabs}}" 
+          wx:key="index"
+          bindtap="switchTab" 
+          data-index="{{index}}">
+          {{item}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="exercise-list">
+    <block wx:if="{{currentTab === 0}}">
+      <view class="exercise-card" wx:for="{{strengthExercises}}" wx:key="index" bindtap="showExerciseDetail" data-index="{{index}}">
+        <view class="card-header">
+          <text class="exercise-title">{{item.title}}</text>
+          <text class="difficulty-tag {{item.difficultyClass}}">{{item.difficulty}}</text>
+        </view>
+        <view class="card-info">
+          <text class="info-icon">⏱️</text>
+          <text class="info-text">{{item.duration}}</text>
+        </view>
+        <view class="card-desc">{{item.description}}</view>
+        <view class="muscle-tags">
+          <text class="muscle-tag" wx:for="{{item.muscles}}" wx:key="index" wx:for-item="muscle">{{muscle}}</text>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{currentTab === 1}}">
+      <view class="exercise-card" wx:for="{{cardioExercises}}" wx:key="index" bindtap="showExerciseDetail" data-index="{{index}}">
+        <view class="card-header">
+          <text class="exercise-title">{{item.title}}</text>
+          <text class="difficulty-tag {{item.difficultyClass}}">{{item.difficulty}}</text>
+        </view>
+        <view class="card-info">
+          <text class="info-icon">⏱️</text>
+          <text class="info-text">{{item.duration}}</text>
+        </view>
+        <view class="card-desc">{{item.description}}</view>
+        <view class="muscle-tags">
+          <text class="benefit-tag" wx:for="{{item.benefits}}" wx:key="index" wx:for-item="benefit">{{benefit}}</text>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{currentTab === 2}}">
+      <view class="exercise-card" wx:for="{{flexibilityExercises}}" wx:key="index" bindtap="showExerciseDetail" data-index="{{index}}">
+        <view class="card-header">
+          <text class="exercise-title">{{item.title}}</text>
+          <text class="difficulty-tag {{item.difficultyClass}}">{{item.difficulty}}</text>
+        </view>
+        <view class="card-info">
+          <text class="info-icon">⏱️</text>
+          <text class="info-text">{{item.duration}}</text>
+        </view>
+        <view class="card-desc">{{item.description}}</view>
+        <view class="muscle-tags">
+          <text class="muscle-tag" wx:for="{{item.benefits}}" wx:key="index" wx:for-item="benefit">{{benefit}}</text>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{currentTab === 3}}">
+      <view class="exercise-card" wx:for="{{powerExercises}}" wx:key="index" bindtap="showExerciseDetail" data-index="{{index}}">
+        <view class="card-header">
+          <text class="exercise-title">{{item.title}}</text>
+          <text class="difficulty-tag {{item.difficultyClass}}">{{item.difficulty}}</text>
+        </view>
+        <view class="card-info">
+          <text class="info-icon">⏱️</text>
+          <text class="info-text">{{item.duration}}</text>
+        </view>
+        <view class="card-desc">{{item.description}}</view>
+        <view class="muscle-tags">
+          <text class="muscle-tag" wx:for="{{item.benefits}}" wx:key="index" wx:for-item="benefit">{{benefit}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="detail-overlay" wx:if="{{exerciseDetail}}" bindtap="closeDetail">
+    <view class="detail-popup" catchtap="true">
+      <view class="popup-header">
+        <text class="popup-title">{{exerciseDetail.title}}</text>
+        <view class="popup-close" bindtap="closeDetail">✕</view>
+      </view>
+
+      <view class="popup-content">
+        <view class="detail-section">
+          <text class="section-label">📝 动作描述</text>
+          <text class="section-text">{{exerciseDetail.description}}</text>
+        </view>
+
+        <view class="detail-section">
+          <text class="section-label">🎯 训练要点</text>
+          <view class="step-list">
+            <view class="step-item" wx:for="{{exerciseDetail.steps}}" wx:key="index">
+              <text class="step-num">{{index + 1}}</text>
+              <text class="step-text">{{item}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <text class="section-label">💡 温馨提示</text>
+          <text class="tips-text">{{exerciseDetail.tips}}</text>
+        </view>
+
+        <view class="detail-section" wx:if="{{exerciseDetail.muscles}}">
+          <text class="section-label">💪 锻炼部位</text>
+          <view class="muscle-list">
+            <text class="muscle-badge" wx:for="{{exerciseDetail.muscles}}" wx:key="index">{{item}}</text>
+          </view>
+        </view>
+
+        <view class="detail-section" wx:if="{{exerciseDetail.benefits}}">
+          <text class="section-label">✨ 益处</text>
+          <view class="benefit-list">
+            <text class="benefit-badge" wx:for="{{exerciseDetail.benefits}}" wx:key="index">{{item}}</text>
+          </view>
+        </view>
+
+        <view class="video-section" bindtap="goToVideo" data-id="{{exerciseDetail.id}}">
+          <text class="video-icon">🎬</text>
+          <text class="video-text">观看完整教学视频</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

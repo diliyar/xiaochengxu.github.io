@@ -1,0 +1,167 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  padding: 30rpx;
+  padding-bottom: 120rpx;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+  padding: 40rpx 0;
+}
+
+.title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #c9a962;
+  margin-bottom: 16rpx;
+}
+
+.subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #888;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.history-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  border: 1rpx solid rgba(201, 169, 98, 0.1);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.05);
+}
+
+.item-date {
+  font-size: 26rpx;
+  color: #888;
+}
+
+.item-score {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.item-score.good {
+  color: #4caf50;
+}
+
+.item-score.normal {
+  color: #ff9800;
+}
+
+.item-score.poor {
+  color: #f44336;
+}
+
+.item-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.item-metric {
+  text-align: center;
+}
+
+.metric-icon {
+  font-size: 32rpx;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.metric-label {
+  font-size: 22rpx;
+  color: #888;
+  display: block;
+}
+
+.metric-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #fff;
+  display: block;
+}
+
+.item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16rpx;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.05);
+}
+
+.item-level {
+  font-size: 26rpx;
+  font-weight: bold;
+}
+
+.item-level.good {
+  color: #4caf50;
+}
+
+.item-level.normal {
+  color: #ff9800;
+}
+
+.item-level.poor {
+  color: #f44336;
+}
+
+.item-arrow {
+  font-size: 32rpx;
+  color: #666;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 120rpx 40rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  display: block;
+  margin-bottom: 30rpx;
+}
+
+.empty-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.empty-desc {
+  font-size: 28rpx;
+  color: #888;
+  display: block;
+  margin-bottom: 40rpx;
+}
+
+.empty-btn {
+  width: 300rpx;
+  height: 88rpx;
+  background: linear-gradient(135deg, #c9a962 0%, #a88432 100%);
+  border: none;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1a1a1a;
+}

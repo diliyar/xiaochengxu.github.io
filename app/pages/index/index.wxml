@@ -1,0 +1,124 @@
+<view class="container">
+  <view class="header">
+    <text class="title">🏃 体质检测</text>
+    <text class="subtitle">输入您的身体数据，获取个性化锻炼建议</text>
+  </view>
+
+  <form bindsubmit="submitForm">
+    <view class="form-section">
+      <view class="section-title">📋 基本信息</view>
+      
+      <view class="form-item">
+        <text class="label">身高 (cm)</text>
+        <input 
+          class="input" 
+          type="number" 
+          name="height" 
+          placeholder="请输入身高" 
+          value="{{height}}"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">体重 (kg)</text>
+        <input 
+          class="input" 
+          type="number" 
+          name="weight" 
+          placeholder="请输入体重" 
+          value="{{weight}}"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">年龄</text>
+        <input 
+          class="input" 
+          type="number" 
+          name="age" 
+          placeholder="请输入年龄" 
+          value="{{age}}"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">性别</text>
+        <radio-group class="radio-group" name="gender">
+          <label class="radio-item">
+            <radio value="male" color="#c9a962"/> 男
+          </label>
+          <label class="radio-item">
+            <radio value="female" color="#c9a962"/> 女
+          </label>
+        </radio-group>
+      </view>
+    </view>
+
+    <view class="form-section">
+      <view class="section-title">❤️ 健康指标</view>
+      
+      <view class="form-item">
+        <text class="label">静息心率 (bpm)</text>
+        <input 
+          class="input" 
+          type="number" 
+          name="heartRate" 
+          placeholder="正常范围: 60-100" 
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">收缩压 (mmHg)</text>
+        <input 
+          class="input" 
+          type="number" 
+          name="systolic" 
+          placeholder="正常范围: 90-140" 
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">舒张压 (mmHg)</text>
+        <input 
+          class="input" 
+          type="number" 
+          name="diastolic" 
+          placeholder="正常范围: 60-90" 
+        />
+      </view>
+    </view>
+
+    <view class="form-section">
+      <view class="section-title">💪 运动习惯</view>
+      
+      <view class="form-item">
+        <text class="label">每周运动频率</text>
+        <picker bindchange="bindFrequencyChange" value="{{frequencyIndex}}" range="{{frequencies}}">
+          <view class="picker">
+            {{frequencies[frequencyIndex] || '请选择'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="label">单次运动时长</text>
+        <picker bindchange="bindDurationChange" value="{{durationIndex}}" range="{{durations}}">
+          <view class="picker">
+            {{durations[durationIndex] || '请选择'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="label">运动强度</text>
+        <picker bindchange="bindIntensityChange" value="{{intensityIndex}}" range="{{intensities}}">
+          <view class="picker">
+            {{intensities[intensityIndex] || '请选择'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <button class="submit-btn" form-type="submit">开始分析</button>
+  </form>
+</view>

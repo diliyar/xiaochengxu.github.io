@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="header">
+    <text class="title">📜 历史记录</text>
+    <text class="subtitle">查看您之前的检测记录</text>
+  </view>
+
+  <view class="history-list" wx:if="{{history.length > 0}}">
+    <view class="history-item" wx:for="{{history}}" wx:key="index" bindtap="viewDetail" data-index="{{index}}">
+      <view class="item-header">
+        <text class="item-date">{{item.createTime}}</text>
+        <text class="item-score {{item.overallScore >= 70 ? 'good' : (item.overallScore >= 50 ? 'normal' : 'poor')}}">{{item.overallScore}}分</text>
+      </view>
+      
+      <view class="item-content">
+        <view class="item-metric">
+          <text class="metric-icon">📏</text>
+          <text class="metric-label">BMI</text>
+          <text class="metric-value">{{item.bmi}}</text>
+        </view>
+        
+        <view class="item-metric">
+          <text class="metric-icon">❤️</text>
+          <text class="metric-label">心率</text>
+          <text class="metric-value">{{item.heartRate || '--'}}</text>
+        </view>
+        
+        <view class="item-metric">
+          <text class="metric-icon">🩸</text>
+          <text class="metric-label">血压</text>
+          <text class="metric-value">{{item.systolic || '--'}}/{{item.diastolic || '--'}}</text>
+        </view>
+      </view>
+      
+      <view class="item-footer">
+        <text class="item-level {{item.overallScore >= 70 ? 'good' : (item.overallScore >= 50 ? 'normal' : 'poor')}}">{{item.healthLevel}}</text>
+        <text class="item-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📭</text>
+    <text class="empty-title">暂无历史记录</text>
+    <text class="empty-desc">开始您的第一次体质检测吧！</text>
+    <button class="empty-btn" bindtap="goToTest">去检测</button>
+  </view>
+</view>
